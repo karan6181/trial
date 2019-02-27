@@ -7,4 +7,4 @@ path = './minc-2500-tiny/train'
 if __name__ == '__main__':
     Data.download(file_url)
     auto = ImageClassifier(path)
-    auto.fit(0.1)
+    auto.fit()
