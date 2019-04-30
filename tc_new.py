@@ -1,4 +1,4 @@
-# from automodel.text import TextClassifier
+from automodel.text import TextClassifier
 # from automodel.text.data import TextClassifierData
 # from automodel.model import TextClassifierModel
 
@@ -27,4 +27,5 @@
 
 from automodel.model import TextClassifierModel
 
-text_model = TextClassifierModel()
+text_clas = TextClassifier()
+text_clas.fit('.')
