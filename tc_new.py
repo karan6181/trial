@@ -1,31 +1,11 @@
 from automodel.text import TextClassifier
-# from automodel.text.data import TextClassifierData
-# from automodel.model import TextClassifierModel
 
-# data = TextClassifierData(data_path="mydatapath")
-# # provides feedback on the data
-# # such as
-# # number of classes, class:data sample ratio, suggestions for collecting more data
-# # this will be useful to the user to get more high quality to further improve model
-# #data.analyze()
-#
-# constraints = ModelConstraints().time_limit(1200).model_size(500).throughput(100)
-#
-# textClassifier = TextClassifer()
-#
-# textClassifier.fit(data,
-#                    metrics = ["loss", "perplexity"],
-#                    model_constraints = constraints,
-#                    resource_config = 'localhost',
-#                    model_generation_policy = TextClassifierPolicy.default())
-#
-# textClassifier.stats() # shows stats about train_loss, val_loss, etc.,
-#
-# textClassifer.evaluate(eval_data_path) # return stats
-#
-# textClassifier.save(path="./")
+def main():
+    data_path = '/Users/shaabhn/Desktop/autoML/aclImdb'
+    text_clas = TextClassifier()
+    text_clas.fit(data_path)
+    #print(len(text_data.train_dataloader))
+#text_clas.fit('.')
 
-from automodel.model import TextClassifierModel
-
-text_clas = TextClassifier()
-text_clas.fit('.')
+if __name__=="__main__":
+    main()
