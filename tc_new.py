@@ -1,7 +1,7 @@
 from automodel.text import TextClassifier
 
 def main():
-    data_path = '/Users/shaabhn/Desktop/autoML/aclImdb'
+    data_path = '/home/ubuntu/aclImdb'
     text_clas = TextClassifier()
     text_clas.fit(data_path)
     #print(len(text_data.train_dataloader))
