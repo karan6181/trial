@@ -1,4 +1,5 @@
 from automodel.text import TextClassifier
+import os
 
 def main():
     data_path = '/Users/karjar/projects/automl/automodel_fit_abhinav/aclImdb'
