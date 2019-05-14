@@ -2,7 +2,7 @@ from automodel.text import TextClassifier
 import os
 
 def main():
-    data_path = '/Users/karjar/projects/automl/automodel_fit_abhinav/aclImdb'
+    data_path = os.path.join(os.getcwd(), 'aclImdb')
     text_clas = TextClassifier()
     text_clas.fit(data_path)
     #print(len(text_data.train_dataloader))
