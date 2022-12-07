@@ -123,7 +123,7 @@ if __name__ == '__main__':
     rank = args.local_rank
     world_size = torch.cuda.device_count()
 
-    torch.cuda.set_device(rank)
+    #torch.cuda.set_device(rank)
     dist_url = "env://"
     torch.distributed.init_process_group(backend=Backend.NCCL, init_method=dist_url,
                                          world_size=world_size, rank=rank)
