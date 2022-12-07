@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from torch.nn.parallel import DistributedDataParallel as DDP
 
-from streaming.base import Dataset as StreamingDataset
+from streaming.base import StreamingDataset
 
 # python -m torch.distributed.launch --nproc_per_node=1 cifar10_streaming_oci.py
 
