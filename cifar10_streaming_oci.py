@@ -95,7 +95,7 @@ def fit(model: nn.Module, train_dataloader: DataLoader, device) -> Tuple[float, 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--local_rank", type=int)
+    parser.add_argument("--local_rank", type=int, default=0)
     parser.add_argument("--local_dir", type=str)
     parser.add_argument("--remote_dir", type=str)
     parser.add_argument("--epochs", type=int, default=10)
