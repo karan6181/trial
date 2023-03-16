@@ -187,8 +187,8 @@ if __name__ == '__main__':
     n_devices = int(args.n_devices)
 
     import os
-    os.environ['WORLD_SIZE'] = str(n_devices)
-    os.environ['LOCAL_WORLD_SIZE'] = '8'
+    os.environ['WORLD_SIZE'] = str(int(n_devices) * int(args.n_nodes))
+    os.environ['LOCAL_WORLD_SIZE'] = str(n_devices)
     os.environ['RANK'] = os.environ.get('LOCAL_RANK', '0')
     #print(f'Rank: {os.environ["RANK"]}')
 
