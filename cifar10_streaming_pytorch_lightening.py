@@ -188,7 +188,7 @@ if __name__ == '__main__':
 
     import os
     os.environ['WORLD_SIZE'] = str(n_devices)
-    os.environ['LOCAL_WORLD_SIZE'] = str(n_devices)
+    os.environ['LOCAL_WORLD_SIZE'] = '8'
     os.environ['RANK'] = os.environ.get('LOCAL_RANK', '0')
     #print(f'Rank: {os.environ["RANK"]}')
 
