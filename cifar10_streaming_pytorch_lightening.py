@@ -44,7 +44,6 @@ class CIFAR10DataModule(pl.LightningDataModule):
             self.cifar_train = StreamingCIFAR10(local=self.local, remote=self.remote,
                                                 split='train', transform=self.transform,
                                                 batch_size=self.batch_size,
-                                                prefix_int=1224,
                                                 )
             # self.cifar_val = StreamingCIFAR10(local=self.local, remote=self.remote,
             #                                    split='val', transform=self.transform,
