@@ -44,18 +44,20 @@ class CIFAR10DataModule(pl.LightningDataModule):
             self.cifar_train = StreamingCIFAR10(local=self.local, remote=self.remote,
                                                 split='train', transform=self.transform,
                                                 batch_size=self.batch_size,
+                                                prefix_int=1325,
                                                 )
-            # self.cifar_val = StreamingCIFAR10(local=self.local, remote=self.remote,
-            #                                    split='val', transform=self.transform,
-            #                                    batch_size=self.batch_size,
-            #                                    prefix_int=2223)
+            self.cifar_val = StreamingCIFAR10(local=self.local, remote=self.remote,
+                                               split='val', transform=self.transform,
+                                               batch_size=self.batch_size,
+                                               prefix_int=1236,
+                                               )
 
     # dataloaders
     def train_dataloader(self):
         return DataLoader(self.cifar_train, batch_size=self.batch_size)
 
-    # def val_dataloader(self):
-    #    return DataLoader(self.cifar_val, batch_size=self.batch_size, num_workers=1)
+    def val_dataloader(self):
+       return DataLoader(self.cifar_val, batch_size=self.batch_size, num_workers=1)
 
 class CIFARLitModel(pl.LightningModule):
     '''model architecture, training, testing and validation loops'''
@@ -182,6 +184,18 @@ if __name__ == '__main__':
         default='ddp',
         help='Distributed strategy to use',
     )
+    args.add_argument(
+        '--epochs',
+        type=int,
+        default=1,
+        help='Number of epochs to run',
+    )
+    args.add_argument(
+        '--val_interval',
+        type=int,
+        default=1,
+        help='Validation to run after every n interval',
+    )
     args = args.parse_args()
     np.random.seed(12341)
     n_devices = int(args.n_devices)
@@ -201,12 +215,12 @@ if __name__ == '__main__':
 
     # Initialize Callbacks
     checkpoint_callback = pl.callbacks.ModelCheckpoint()
-    trainer = pl.Trainer(max_epochs=1,
+    trainer = pl.Trainer(max_epochs=int(args.epochs),
                         devices=n_devices,
                         accelerator=args.accelerator,
                         strategy=args.strategy,
                         callbacks=[checkpoint_callback],
-                        check_val_every_n_epoch=10,
+                        check_val_every_n_epoch=int(args.val_interval),
                         num_nodes=int(args.n_nodes),
                         )
 
