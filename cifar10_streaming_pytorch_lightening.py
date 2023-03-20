@@ -203,8 +203,9 @@ if __name__ == '__main__':
     import os
     os.environ['WORLD_SIZE'] = str(int(n_devices) * int(args.n_nodes))
     os.environ['LOCAL_WORLD_SIZE'] = str(n_devices)
-    os.environ['RANK'] = os.environ.get('LOCAL_RANK', '0')
-    #print(f'Rank: {os.environ["RANK"]}')
+    os.environ['RANK'] = str((int(os.environ['LOCAL_WORLD_SIZE']) * int(os.environ.get('NODE_RANK', '0'))) + int(os.environ.get('LOCAL_RANK', '0')))
+    print(f'Rank: {os.environ["RANK"]}')
+    print(f'os env: {os.environ.items()}')
 
     dm = CIFAR10DataModule(batch_size=32)
     dm.prepare_data()
